@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+import static com.epam.bookstore.util.PageNameConstants.errorJsp;
+
 public class ErrorService implements Service {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ParseException, SQLException {

@@ -14,19 +14,22 @@
             <a class="navbar-brand" href="#">Book Store</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#">Каталог</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Catalog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Войти
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Войти</a></li>
+                        <li><a class="dropdown-item" href="registration.jsp">Регистрация</a></li>
+                    </ul>
                 </li>
             </ul>
 
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Найти книгу..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Поиск</button>
             </form>
         </div>
     </div>

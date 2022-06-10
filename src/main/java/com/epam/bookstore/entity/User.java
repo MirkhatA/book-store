@@ -15,6 +15,8 @@ public class User {
     private Integer admin;
     private Date registeredAt;
     private String status;
+    private Integer roleId;
+    private String role;
 
     public User() {
 
@@ -100,6 +102,22 @@ public class User {
         this.status = status;
     }
 
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,12 +132,14 @@ public class User {
                 Objects.equals(mobile, user.mobile) &&
                 Objects.equals(admin, user.admin) &&
                 Objects.equals(registeredAt, user.registeredAt) &&
-                Objects.equals(status, user.status);
+                Objects.equals(status, user.status) &&
+                Objects.equals(roleId, user.roleId) &&
+                Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, password, address, mobile, admin, registeredAt, status);
+        return Objects.hash(id, firstName, lastName, email, password, address, mobile, admin, registeredAt, status, roleId, role);
     }
 
     @Override
@@ -135,6 +155,8 @@ public class User {
                 ", admin=" + admin +
                 ", registeredAt=" + registeredAt +
                 ", status='" + status + '\'' +
+                ", roleId='" + roleId + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

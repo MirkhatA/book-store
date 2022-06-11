@@ -1,8 +1,10 @@
-package com.epam.bookstore.service;
+package com.epam.bookstore.service.factory;
 
 import com.epam.bookstore.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserFactory {
     private static UserFactory instance = new UserFactory();
@@ -17,6 +19,8 @@ public class UserFactory {
         user.setPassword(req.getParameter("password"));
         return user;
     }
+
+
 
     public static UserFactory getInstance() {
         if (instance == null) {

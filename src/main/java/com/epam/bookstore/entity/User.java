@@ -12,7 +12,6 @@ public class User {
     private String password;
     private String address;
     private String mobile;
-    private Integer admin;
     private Date registeredAt;
     private String status;
     private Integer roleId;
@@ -78,14 +77,6 @@ public class User {
         this.mobile = mobile;
     }
 
-    public Integer getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Integer admin) {
-        this.admin = admin;
-    }
-
     public Date getRegisteredAt() {
         return registeredAt;
     }
@@ -130,7 +121,6 @@ public class User {
                 Objects.equals(password, user.password) &&
                 Objects.equals(address, user.address) &&
                 Objects.equals(mobile, user.mobile) &&
-                Objects.equals(admin, user.admin) &&
                 Objects.equals(registeredAt, user.registeredAt) &&
                 Objects.equals(status, user.status) &&
                 Objects.equals(roleId, user.roleId) &&
@@ -139,7 +129,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, password, address, mobile, admin, registeredAt, status, roleId, role);
+        return Objects.hash(id, firstName, lastName, email, password, address, mobile, registeredAt, status, roleId, role);
     }
 
     @Override
@@ -152,7 +142,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", address='" + address + '\'' +
                 ", mobile='" + mobile + '\'' +
-                ", admin=" + admin +
                 ", registeredAt=" + registeredAt +
                 ", status='" + status + '\'' +
                 ", roleId='" + roleId + '\'' +

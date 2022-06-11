@@ -6,6 +6,7 @@ public interface UserDao extends Dao<User>{
 
     User getById(Long id);
 
-    User getUserByEmailPassword(String email, String password);
+    User getUserByLoginPassword(String login, String password);
+
 
 }

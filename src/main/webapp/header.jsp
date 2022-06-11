@@ -21,7 +21,7 @@
                         Войти
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Войти</a></li>
+                        <li><a class="dropdown-item" href="login.jsp">Войти</a></li>
                         <li><a class="dropdown-item" href="registration.jsp">Регистрация</a></li>
                     </ul>
                 </li>

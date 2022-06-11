@@ -3,6 +3,7 @@ package com.epam.bookstore.service;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import static com.epam.bookstore.service.ServiceUrl.*;
 
 public class ServiceFactory {
@@ -13,6 +14,7 @@ public class ServiceFactory {
     static {
         serviceMap.put(errorService, new ErrorService());
         serviceMap.put(registerService, new RegisterService());
+        serviceMap.put(loginService, new LoginService());
     }
 
     public static ServiceFactory getInstance() {

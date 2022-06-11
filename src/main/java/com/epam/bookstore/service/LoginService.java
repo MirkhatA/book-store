@@ -13,18 +13,25 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-public class RegisterService implements Service{
+public class LoginService implements Service{
     private final UserDao userDao = new UserDaoImpl();
     private final UserFactory userFactory = UserFactory.getInstance();
+    private final ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
+        String login = req.getParameter("login");
+        String password = req.getParameter("password");
 
-        User user = userFactory.setData(req);
-        userDao.create(user);
+        User user = userDao.getUserByLoginPassword(login, password);
 
-        dispatcher = req.getRequestDispatcher("index.jsp");
-        dispatcher.forward(req, res);
+        if (user != null) {
+            System.out.println("logged in");
+        } else {
+            System.out.println("error");
+            dispatcher = req.getRequestDispatcher("login.jsp");
+            dispatcher.forward(req, res);
+        }
     }
 }

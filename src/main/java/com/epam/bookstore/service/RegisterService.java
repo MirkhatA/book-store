@@ -9,10 +9,12 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+
+import static com.epam.bookstore.util.PageNameConstants.indexJsp;
+import static com.epam.bookstore.util.PageNameConstants.registrationJsp;
 
 public class RegisterService implements Service{
     private final UserDao userDao = new UserDaoImpl();
@@ -24,16 +26,16 @@ public class RegisterService implements Service{
 
         if (userDao.isEmailExist(req.getParameter("email"))) {
             req.setAttribute("emailIsTaken", "This email is already is taken");
-            dispatcher = req.getRequestDispatcher("registration.jsp");
+            dispatcher = req.getRequestDispatcher(registrationJsp);
             dispatcher.forward(req, res);
         } else if (userDao.isNumberExist(req.getParameter("phoneNo"))) {
             req.setAttribute("numberIsTaken", "This number is already is taken");
-            dispatcher = req.getRequestDispatcher("registration.jsp");
+            dispatcher = req.getRequestDispatcher(registrationJsp);
             dispatcher.forward(req, res);
         } else {
             User user = userFactory.setData(req);
             userDao.create(user);
-            dispatcher = req.getRequestDispatcher("index.jsp");
+            dispatcher = req.getRequestDispatcher(indexJsp);
             dispatcher.forward(req, res);
         }
     }

@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+import static com.epam.bookstore.util.PageNameConstants.indexJsp;
+import static com.epam.bookstore.util.PageNameConstants.loginJsp;
+
 public class LoginService implements Service{
     private final UserDao userDao = new UserDaoImpl();
     private final UserFactory userFactory = UserFactory.getInstance();
@@ -33,11 +36,11 @@ public class LoginService implements Service{
             session.setAttribute("userId", user.getId());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("role", user.getRoleId());
-            dispatcher = req.getRequestDispatcher("index.jsp");
+            dispatcher = req.getRequestDispatcher(indexJsp);
             dispatcher.forward(req, res);
         } else {
             req.setAttribute("loginError", "Login error");
-            dispatcher = req.getRequestDispatcher("login.jsp");
+            dispatcher = req.getRequestDispatcher(loginJsp);
             dispatcher.forward(req, res);
         }
     }

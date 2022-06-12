@@ -20,8 +20,6 @@ public class UserFactory {
         return user;
     }
 
-
-
     public static UserFactory getInstance() {
         if (instance == null) {
             instance = new UserFactory();

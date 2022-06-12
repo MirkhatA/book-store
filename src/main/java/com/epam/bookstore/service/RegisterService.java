@@ -9,6 +9,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -23,7 +24,6 @@ public class RegisterService implements Service{
 
         User user = userFactory.setData(req);
         userDao.create(user);
-
         dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req, res);
     }

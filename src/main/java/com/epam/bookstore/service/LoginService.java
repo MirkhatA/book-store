@@ -33,9 +33,10 @@ public class LoginService implements Service{
             session.setAttribute("userId", user.getId());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("role", user.getRoleId());
-            System.out.println("logged in");
+            dispatcher = req.getRequestDispatcher("index.jsp");
+            dispatcher.forward(req, res);
         } else {
-            System.out.println("error");
+            req.setAttribute("loginError", "Login error");
             dispatcher = req.getRequestDispatcher("login.jsp");
             dispatcher.forward(req, res);
         }

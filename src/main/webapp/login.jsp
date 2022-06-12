@@ -1,9 +1,15 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="header.jsp"/>
 
 <div class="container mt-5">
     <div class="row">
         <form action="userLogin" method="post">
+            <c:if test="${requestScope.loginError != null}">
+                <div class="alert alert-danger" role="alert">
+                    Неверный логин или пароль
+                </div>
+            </c:if>
             <div class="mb-3 row">
                 <label for="email" class="col-sm-2 col-form-label">Email или телефон</label>
                 <div class="col-sm-10">

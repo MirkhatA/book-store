@@ -23,11 +23,11 @@ public class RegisterService implements Service{
         RequestDispatcher dispatcher;
 
         if (userDao.isEmailExist(req.getParameter("email"))) {
-            System.out.println("email exist");
+            req.setAttribute("emailIsTaken", "This email is already is taken");
             dispatcher = req.getRequestDispatcher("registration.jsp");
             dispatcher.forward(req, res);
         } else if (userDao.isNumberExist(req.getParameter("phoneNo"))) {
-            System.out.println("phoneNo exist");
+            req.setAttribute("numberIsTaken", "This number is already is taken");
             dispatcher = req.getRequestDispatcher("registration.jsp");
             dispatcher.forward(req, res);
         } else {

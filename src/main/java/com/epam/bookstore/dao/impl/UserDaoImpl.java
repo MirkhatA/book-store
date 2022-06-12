@@ -15,6 +15,8 @@ import java.util.Optional;
 public class UserDaoImpl implements UserDao {
     private static final String INSERT_USER = "INSERT INTO users (first_name, email, password, mobile, role_id) VALUES(?, ?, ?, ?, ?);";
     private static final String GET_USER_BY_LOGIN_PASSWORD = "SELECT * FROM users WHERE (email=? OR mobile=?)    AND password=?;";
+    private static final String GET_USER_BY_LOGIN = "SELECT * FROM users WHERE email=?;";
+    private static final String GET_USER_BY_MOBILE = "SELECT * FROM users WHERE mobile=?;";
 
     private ConnectionPool connectionPool;
     private Connection connection;
@@ -46,6 +48,43 @@ public class UserDaoImpl implements UserDao {
 
         return user;
     }
+
+    @Override
+    public boolean isNumberExist(String mobile) {
+        connectionPool = ConnectionPool.getInstance();
+        connection = connectionPool.takeConnection();
+
+        try (PreparedStatement ps = connection.prepareStatement(GET_USER_BY_MOBILE)){
+            ps.setString(1, mobile);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean isEmailExist(String email) {
+        connectionPool = ConnectionPool.getInstance();
+        connection = connectionPool.takeConnection();
+
+        try (PreparedStatement ps = connection.prepareStatement(GET_USER_BY_LOGIN)){
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
 
     public void setParameters(User user, ResultSet resultSet) throws SQLException {
         user.setId(resultSet.getLong("id"));

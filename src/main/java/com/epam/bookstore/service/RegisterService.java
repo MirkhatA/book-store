@@ -22,9 +22,19 @@ public class RegisterService implements Service{
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
 
-        User user = userFactory.setData(req);
-        userDao.create(user);
-        dispatcher = req.getRequestDispatcher("index.jsp");
-        dispatcher.forward(req, res);
+        if (userDao.isEmailExist(req.getParameter("email"))) {
+            System.out.println("email exist");
+            dispatcher = req.getRequestDispatcher("registration.jsp");
+            dispatcher.forward(req, res);
+        } else if (userDao.isNumberExist(req.getParameter("phoneNo"))) {
+            System.out.println("phoneNo exist");
+            dispatcher = req.getRequestDispatcher("registration.jsp");
+            dispatcher.forward(req, res);
+        } else {
+            User user = userFactory.setData(req);
+            userDao.create(user);
+            dispatcher = req.getRequestDispatcher("index.jsp");
+            dispatcher.forward(req, res);
+        }
     }
 }

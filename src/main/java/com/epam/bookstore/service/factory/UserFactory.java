@@ -17,6 +17,7 @@ public class UserFactory {
         user.setFirstName(req.getParameter("firstName"));
         user.setEmail(req.getParameter("email"));
         user.setPassword(req.getParameter("password"));
+        user.setMobile(req.getParameter("phoneNo"));
         return user;
     }
 

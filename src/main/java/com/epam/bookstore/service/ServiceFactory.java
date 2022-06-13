@@ -15,6 +15,7 @@ public class ServiceFactory {
         serviceMap.put(errorService, new ErrorService());
         serviceMap.put(registerService, new RegisterService());
         serviceMap.put(loginService, new LoginService());
+        serviceMap.put(showAllGenresService, new ShowAllGenresService());
     }
 
     public static ServiceFactory getInstance() {

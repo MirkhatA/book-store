@@ -23,11 +23,6 @@ public class UserDaoImpl implements UserDao {
     private UserFactory userFactory;
 
     @Override
-    public User getById(Long id) {
-        return null;
-    }
-
-    @Override
     public User getUserByLoginPassword(String login, String password) {
         connectionPool = ConnectionPool.getInstance();
         connection = connectionPool.takeConnection();
@@ -97,11 +92,6 @@ public class UserDaoImpl implements UserDao {
         user.setRegisteredAt(resultSet.getDate("registered_at"));
         user.setStatus(resultSet.getString("status"));
         user.setRoleId(resultSet.getInt("role_id"));
-    }
-
-    @Override
-    public Optional<User> get(long id) {
-        return Optional.empty();
     }
 
     @Override

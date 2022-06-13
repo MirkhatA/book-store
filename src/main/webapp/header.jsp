@@ -14,12 +14,15 @@
             <a class="navbar-brand" href="#">Book Store</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Каталог</a>
+                    <form id="genres" action="showAllGenres" method="get">
+                        <button type="submit" form="genres">Жанры</button>
+                    </form>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Войти
                     </a>
+
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="login.jsp">Войти</a></li>
                         <li><a class="dropdown-item" href="registration.jsp">Регистрация</a></li>

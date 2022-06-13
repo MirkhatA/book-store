@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Author {
 
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String fullName;
+    private String languageId;
 
     public Author() {
     }
@@ -19,20 +19,20 @@ public class Author {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLanguageId() {
+        return languageId;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLanguageId(String languageId) {
+        this.languageId = languageId;
     }
 
     @Override
@@ -41,21 +41,21 @@ public class Author {
         if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
         return Objects.equals(id, author.id) &&
-                Objects.equals(firstName, author.firstName) &&
-                Objects.equals(lastName, author.lastName);
+                Objects.equals(fullName, author.fullName) &&
+                Objects.equals(languageId, author.languageId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
+        return Objects.hash(id, fullName, languageId);
     }
 
     @Override
     public String toString() {
         return "Author{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", languageId='" + languageId + '\'' +
                 '}';
     }
 }

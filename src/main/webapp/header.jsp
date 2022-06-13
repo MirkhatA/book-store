@@ -10,13 +10,13 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
             <a class="navbar-brand" href="#">Book Store</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <form id="genres" action="showAllGenres" method="get">
-                        <button type="submit" form="genres">Жанры</button>
-                    </form>
+                    <a class="nav-link" href="showAllGenres">Жанры</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="showAllAuthors">Авторы</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,6 +29,18 @@
                     </ul>
                 </li>
             </ul>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger">Язык</button>
+                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Eng</a></li>
+                    <li><a class="dropdown-item" href="#">Рус</a></li>
+
+                </ul>
+            </div>
 
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Найти книгу..." aria-label="Search">

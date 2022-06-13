@@ -10,13 +10,14 @@
             <th>Language</th>
         </tr>
 
-        <c:forEach var="genre" items="${sessionScope.genres}">
+        <c:forEach var="author" items="${sessionScope.authors}">
             <tr>
-                <td>${genre.id}</td>
-                <td>${genre.name}</td>
-                <td>${genre.languageId}</td>
+                <th>${author.id}</th>
+                <th>${author.fullName}</th>
+                <th>${author.languageId}</th>
             </tr>
         </c:forEach>
+
     </table>
 </div>
 

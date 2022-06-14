@@ -11,25 +11,25 @@ public class LanguageFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        languageName = filterConfig.getInitParameter("langName");
+        languageName = filterConfig.getInitParameter("langNameDefault");
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-//        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-//        HttpSession session = httpServletRequest.getSession();
-//
-//        String language = (String) session.getAttribute("language");
-//
-//        if (language == null) {
-//            session.setAttribute("language", languageName);
-//        } else if (language.equals("ru")) {
-//            session.setAttribute("language", "ru");
-//        } else if (language.equals("en")) {
-//            session.setAttribute("language", "en");
-//        }
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        HttpSession session = httpServletRequest.getSession();
 
-//        servletResponse.getWriter().write("after");
+        String language = (String) session.getAttribute("language");
+
+        if (language == null) {
+            session.setAttribute("language", languageName);
+        } else if (language.equals("ru")) {
+            session.setAttribute("language", "ru");
+        } else if (language.equals("en")) {
+            session.setAttribute("language", "en");
+        }
+
+        servletResponse.getWriter().write("after");
 
         filterChain.doFilter(servletRequest, servletResponse);
     }

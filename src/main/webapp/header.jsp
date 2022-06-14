@@ -1,4 +1,7 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<fmt:setLocale value="${sessionScope.language}"/>
+<fmt:setBundle basename="messages"/>
 <html>
 <head>
     <title>Title</title>
@@ -13,25 +16,25 @@
             <a class="navbar-brand" href="#">Book Store</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="showAllGenres">Жанры</a>
+                    <a class="nav-link" href="showAllGenres"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="showAllAuthors">Авторы</a>
+                    <a class="nav-link" href="showAllAuthors"><fmt:message key="label.authors"/></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Войти
+                        <fmt:message key="label.login"/>
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="login.jsp">Войти</a></li>
-                        <li><a class="dropdown-item" href="registration.jsp">Регистрация</a></li>
+                        <li><a class="dropdown-item" href="login.jsp"><fmt:message key="label.login"/></a></li>
+                        <li><a class="dropdown-item" href="registration.jsp"><fmt:message key="label.register"/></a></li>
                     </ul>
                 </li>
             </ul>
 
             <div class="btn-group">
-                <button type="button" class="btn btn-danger">Язык</button>
+                <button type="button" class="btn btn-danger"><fmt:message key=""/> </button>
                 <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="visually-hidden">Toggle Dropdown</span>
                 </button>

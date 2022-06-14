@@ -8,7 +8,6 @@ public class Book {
     private Long id;
     private String title;
     private String description;
-    private Date publicationDate;
     private String image;
     private Integer quantity;
     private Double price;
@@ -41,14 +40,6 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Date getPublicationDate() {
-        return publicationDate;
-    }
-
-    public void setPublicationDate(Date publicationDate) {
-        this.publicationDate = publicationDate;
     }
 
     public String getImage() {
@@ -107,7 +98,6 @@ public class Book {
         return Objects.equals(id, book.id) &&
                 Objects.equals(title, book.title) &&
                 Objects.equals(description, book.description) &&
-                Objects.equals(publicationDate, book.publicationDate) &&
                 Objects.equals(image, book.image) &&
                 Objects.equals(quantity, book.quantity) &&
                 Objects.equals(price, book.price) &&
@@ -118,7 +108,7 @@ public class Book {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, publicationDate, image, quantity, price, authorId, publisherId, languageId);
+        return Objects.hash(id, title, description, image, quantity, price, authorId, publisherId, languageId);
     }
 
     @Override
@@ -127,7 +117,6 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", publicationDate=" + publicationDate +
                 ", image='" + image + '\'' +
                 ", quantity=" + quantity +
                 ", price=" + price +

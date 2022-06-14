@@ -36,6 +36,7 @@ public class LoginService implements Service{
             session.setAttribute("userId", user.getId());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("role", user.getRoleId());
+
             dispatcher = req.getRequestDispatcher(indexJsp);
             dispatcher.forward(req, res);
         } else {

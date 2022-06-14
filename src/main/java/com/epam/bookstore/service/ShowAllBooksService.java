@@ -1,9 +1,10 @@
 package com.epam.bookstore.service;
 
-import com.epam.bookstore.dao.GenreDao;
-import com.epam.bookstore.dao.impl.GenreDaoImpl;
-import com.epam.bookstore.entity.Genre;
+import com.epam.bookstore.dao.BookDao;
+import com.epam.bookstore.dao.impl.BookDaoImpl;
+import com.epam.bookstore.entity.Book;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,18 +14,18 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-import static com.epam.bookstore.util.PageNameConstants.genresJsp;
+import static com.epam.bookstore.util.PageNameConstants.booksJsp;
 
-public class ShowAllGenresService implements Service {
-    private GenreDao genreDao = new GenreDaoImpl();
+public class ShowAllBooksService implements Service {
+    private BookDao bookDao = new BookDaoImpl();
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ParseException, SQLException {
         HttpSession session = req.getSession();
 
-        List<Genre> genres = genreDao.getAll();
+        List<Book> books = bookDao.getAll();
 
-        session.setAttribute("genres", genres);
-        req.getRequestDispatcher(genresJsp).forward(req, res);
+        session.setAttribute("books", books);
+        req.getRequestDispatcher(booksJsp).forward(req, res);
     }
 }

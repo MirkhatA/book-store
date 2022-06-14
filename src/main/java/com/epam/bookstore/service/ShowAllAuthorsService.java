@@ -25,6 +25,6 @@ public class ShowAllAuthorsService implements Service {
         List<Author> authors = authorDao.getAll();
 
         session.setAttribute("authors", authors);
-        res.sendRedirect(authorsJsp);
+        req.getRequestDispatcher(authorsJsp).forward(req, res);
     }
 }

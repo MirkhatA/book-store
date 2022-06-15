@@ -10,11 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
 public class UserDaoImpl implements UserDao {
     private static final String INSERT_USER = "INSERT INTO users (first_name, email, password, mobile, role_id) VALUES(?, ?, ?, ?, ?);";
-    private static final String GET_USER_BY_LOGIN_PASSWORD = "SELECT * FROM users WHERE (email=? OR mobile=?)    AND password=?;";
+    private static final String GET_USER_BY_LOGIN_PASSWORD = "SELECT * FROM users WHERE (email=? OR mobile=?) AND password=?;";
     private static final String GET_USER_BY_LOGIN = "SELECT * FROM users WHERE email=?;";
     private static final String GET_USER_BY_MOBILE = "SELECT * FROM users WHERE mobile=?;";
 
@@ -95,7 +94,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> getAll(int langId) {
         return null;
     }
 

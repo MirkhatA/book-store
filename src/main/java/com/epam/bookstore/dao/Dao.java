@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface Dao<T> {
-    List<T> getAll() throws SQLException;
+    List<T> getAll(int langId) throws SQLException;
 
     void create(T t);
 

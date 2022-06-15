@@ -1,5 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="messages"/>
 <html>
@@ -13,10 +14,10 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">Book Store</a>
+            <a class="navbar-brand" href="/books.jsp">Book Store</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="showAllGenres"></a>
+                    <a class="nav-link" href="showAllGenres"><fmt:message key="label.genres"/></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="showAllAuthors"><fmt:message key="label.authors"/></a>
@@ -33,21 +34,21 @@
                 </li>
             </ul>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-danger"><fmt:message key=""/> </button>
-                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Eng</a></li>
-                    <li><a class="dropdown-item" href="#">Рус</a></li>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <c:out value="${sessionScope.language}"/>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/changeToEnglishService">English</a></li>
+                        <li><a class="dropdown-item" href="#">Русский</a></li>
+                    </ul>
+                </li>
+            </ul>
 
-                </ul>
-            </div>
-
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Найти книгу..." aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Поиск</button>
+            <form class="d-flex m-0" role="search">
+                <input class="form-control me-2" type="search" placeholder="<fmt:message key="label.searchBook"/>" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit"><fmt:message key="label.search"/></button>
             </form>
         </div>
     </div>

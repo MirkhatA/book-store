@@ -22,8 +22,9 @@ public class ShowAllBooksService implements Service {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ParseException, SQLException {
         HttpSession session = req.getSession();
+        Integer langId = (Integer) session.getAttribute("languageId");
 
-        List<Book> books = bookDao.getAll();
+        List<Book> books = bookDao.getAll(langId);
 
         session.setAttribute("books", books);
         req.getRequestDispatcher(booksJsp).forward(req, res);

@@ -12,20 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AuthorDaoImpl implements AuthorDao {
-
-    private static final String GET_ALL_AUTHORS = "SELECT * FROM authors;";
+    private static final String GET_ALL_AUTHORS = "SELECT * FROM authors WHERE language_id=?";
 
     private ConnectionPool connectionPool;
     private Connection connection;
 
     @Override
-    public List<Author> getAll() throws SQLException {
+    public List<Author> getAll(int langId) throws SQLException {
         List<Author> authors = new ArrayList<>();
 
         connectionPool = ConnectionPool.getInstance();
         connection = connectionPool.takeConnection();
 
         try (PreparedStatement ps = connection.prepareStatement(GET_ALL_AUTHORS)){
+            ps.setInt(1, langId);
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

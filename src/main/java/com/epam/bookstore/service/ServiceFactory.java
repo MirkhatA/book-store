@@ -18,6 +18,7 @@ public class ServiceFactory {
         serviceMap.put(showAllGenresService, new ShowAllGenresService());
         serviceMap.put(showAllAuthorsService, new ShowAllAuthorsService());
         serviceMap.put(showAllBooksService, new ShowAllBooksService());
+        serviceMap.put(changeToEnglishService, new ChangeToEnglishService());
     }
 
     public static ServiceFactory getInstance() {

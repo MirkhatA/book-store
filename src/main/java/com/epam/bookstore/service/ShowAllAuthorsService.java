@@ -21,8 +21,9 @@ public class ShowAllAuthorsService implements Service {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ParseException, SQLException {
         HttpSession session = req.getSession();
+        Integer langId = (Integer) session.getAttribute("languageId");
 
-        List<Author> authors = authorDao.getAll();
+        List<Author> authors = authorDao.getAll(langId);
 
         session.setAttribute("authors", authors);
         req.getRequestDispatcher(authorsJsp).forward(req, res);

@@ -12,19 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookDaoImpl implements BookDao {
-    private static final String GET_ALL_BOOKS = "SELECT * FROM books";
+    private static final String GET_ALL_BOOKS = "SELECT * FROM books WHERE language_id=?";
 
     private ConnectionPool connectionPool;
     private Connection connection;
 
     @Override
-    public List<Book> getAll() throws SQLException {
+    public List<Book> getAll(int langId) throws SQLException {
         List<Book> books = new ArrayList<>();
 
         connectionPool = ConnectionPool.getInstance();
         connection = connectionPool.takeConnection();
 
         try (PreparedStatement ps = connection.prepareStatement(GET_ALL_BOOKS)){
+            ps.setInt(1, langId);
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

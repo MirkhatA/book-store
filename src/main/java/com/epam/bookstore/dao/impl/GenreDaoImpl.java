@@ -14,20 +14,23 @@ import java.util.List;
 import java.util.Optional;
 
 public class GenreDaoImpl implements GenreDao {
-    private static final String GET_ALL_GENRES = "SELECT * FROM genres;";
+    private static final String GET_ALL_GENRES = "SELECT * FROM genres WHERE language_id=?;";
 
     private ConnectionPool connectionPool;
     private Connection connection;
 
     @Override
-    public List<Genre> getAll() throws SQLException {
+    public List<Genre> getAll(int langId) throws SQLException {
         List<Genre> genres = new ArrayList<>();
 
         connectionPool = ConnectionPool.getInstance();
         connection = connectionPool.takeConnection();
 
         try (PreparedStatement ps = connection.prepareStatement(GET_ALL_GENRES)) {
+            ps.setInt(1, langId);
+
             ResultSet rs = ps.executeQuery();
+
             while (rs.next()) {
                 pushToGenreList(genres, rs);
             }

@@ -2,6 +2,7 @@ package com.epam.bookstore.service;
 
 import com.epam.bookstore.dao.GenreDao;
 import com.epam.bookstore.dao.impl.GenreDaoImpl;
+import com.epam.bookstore.entity.Author;
 import com.epam.bookstore.entity.Genre;
 
 import javax.servlet.ServletException;
@@ -22,7 +23,9 @@ public class ShowAllGenresService implements Service {
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ParseException, SQLException {
         HttpSession session = req.getSession();
 
-        List<Genre> genres = genreDao.getAll();
+        Integer langId = (Integer) session.getAttribute("languageId");
+
+        List<Genre> genres = genreDao.getAll(langId);
 
         session.setAttribute("genres", genres);
         req.getRequestDispatcher(genresJsp).forward(req, res);

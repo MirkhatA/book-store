@@ -4,14 +4,13 @@
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="messages"/>
 
-
 <jsp:include page="header.jsp"/>
 
 <div class="container">
 
-    <p><c:if test="${not empty sessionScope.language}">
-        <c:out value="${sessionScope.language}"/>
-    </c:if></p>
+<%--    <p><c:if test="${not empty sessionScope.languageId}">--%>
+<%--        <c:out value="${sessionScope.languageId}"/>--%>
+<%--    </c:if></p>--%>
 
     <h1><fmt:message key="label.welcomeTitle"/></h1>
 

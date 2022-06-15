@@ -19,7 +19,11 @@
         <filter-class>com.epam.bookstore.filter.LanguageFilter</filter-class>
         <init-param>
             <param-name>langNameDefault</param-name>
-            <param-value>en</param-value>
+            <param-value>ru</param-value>
+        </init-param>
+        <init-param>
+            <param-name>langIdDefault</param-name>
+            <param-value>2</param-value>
         </init-param>
     </filter>
     <filter-mapping>

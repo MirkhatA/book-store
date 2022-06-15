@@ -35,6 +35,10 @@ public class LoginService implements Service{
         if (user != null) {
             session.setAttribute("userId", user.getId());
             session.setAttribute("email", user.getEmail());
+            session.setAttribute("firstName", user.getFirstName());
+            session.setAttribute("lastName", user.getLastName());
+            session.setAttribute("address", user.getAddress());
+            session.setAttribute("mobile", user.getMobile());
             session.setAttribute("role", user.getRoleId());
 
             dispatcher = req.getRequestDispatcher(indexJsp);

@@ -9,5 +9,6 @@ public class ServiceUrl {
     static final String showAllBooksService = "/showAllBooks";
     static final String changeToEnglishService = "/changeToEnglishService";
     static final String logoutService = "/logoutService";
-    static final String profileService = "/profileService";
+    static final String showProfileService = "/showProfileService";
+    static final String updateUserDataService = "/updateUserDataService";
 }

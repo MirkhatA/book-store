@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-import static com.epam.bookstore.util.PageNameConstants.authorsJsp;
+import static com.epam.bookstore.constants.PageNameConstants.authorsJsp;
 
 public class ShowAllAuthorsService implements Service {
     private AuthorDao authorDao = new AuthorDaoImpl();

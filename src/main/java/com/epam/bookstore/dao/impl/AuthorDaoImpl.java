@@ -49,7 +49,7 @@ public class AuthorDaoImpl implements AuthorDao {
     }
 
     @Override
-    public void update(Author author, String[] params) {
+    public void update(Author author, int langId) {
 
     }
 

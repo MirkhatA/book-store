@@ -61,7 +61,7 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public void update(Book book, String[] params) {
+    public void update(Book book, int langId) {
 
     }
 

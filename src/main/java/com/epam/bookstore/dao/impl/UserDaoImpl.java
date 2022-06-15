@@ -16,6 +16,8 @@ public class UserDaoImpl implements UserDao {
     private static final String GET_USER_BY_LOGIN_PASSWORD = "SELECT * FROM users WHERE (email=? OR mobile=?) AND password=?;";
     private static final String GET_USER_BY_LOGIN = "SELECT * FROM users WHERE email=?;";
     private static final String GET_USER_BY_MOBILE = "SELECT * FROM users WHERE mobile=?;";
+    private static final String GET_USER_BY_ID = "SELECT * FROM users WHERE id=?";
+    private static final String UPDATE_USER_BY_ID = "UPDATE users SET first_name=?, last_name=?, email=?, address=?, mobile=? WHERE id=?;";
 
     private ConnectionPool connectionPool;
     private Connection connection;
@@ -116,12 +118,44 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void update(User user, String[] params) {
+    public void update(User user, int langId) throws SQLException {
+        connectionPool = ConnectionPool.getInstance();
+        connection = connectionPool.takeConnection();
 
+        try (PreparedStatement ps = connection.prepareStatement(UPDATE_USER_BY_ID)){
+            ps.setString(1, user.getFirstName());
+            ps.setString(2, user.getLastName());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getAddress());
+            ps.setString(5, user.getMobile());
+            ps.setLong(6, user.getId());
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public User getById(long id) {
+        connectionPool = ConnectionPool.getInstance();
+        connection = connectionPool.takeConnection();
+
+        User user = null;
+
+        try (PreparedStatement ps = connection.prepareStatement(GET_USER_BY_ID)){
+            ps.setLong(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                user = new User();
+                setParameters(user, rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 }

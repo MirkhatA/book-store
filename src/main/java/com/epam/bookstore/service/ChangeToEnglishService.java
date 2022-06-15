@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import static com.epam.bookstore.util.PageNameConstants.indexJsp;
+import static com.epam.bookstore.constants.PageNameConstants.indexJsp;
 
 public class ChangeToEnglishService implements Service {
     @Override

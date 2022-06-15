@@ -2,7 +2,6 @@ package com.epam.bookstore.service;
 
 import com.epam.bookstore.dao.GenreDao;
 import com.epam.bookstore.dao.impl.GenreDaoImpl;
-import com.epam.bookstore.entity.Author;
 import com.epam.bookstore.entity.Genre;
 
 import javax.servlet.ServletException;
@@ -14,7 +13,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-import static com.epam.bookstore.util.PageNameConstants.genresJsp;
+import static com.epam.bookstore.constants.PageNameConstants.genresJsp;
 
 public class ShowAllGenresService implements Service {
     private GenreDao genreDao = new GenreDaoImpl();

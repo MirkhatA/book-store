@@ -9,30 +9,48 @@
 <div class="container">
     <h2><fmt:message key="label.personalPage"/></h2>
 
-    <form action="">
+    <form action="updateUserDataService" method="post">
+        <c:if test="${requestScope.emailIsTaken != null}">
+            <div class="alert alert-danger" role="alert">
+                Данная почта уже зарегестрирована!
+            </div>
+        </c:if>
+        <c:if test="${requestScope.numberIsTaken != null}">
+            <div class="alert alert-danger" role="alert">
+                Данный номер уже зарегестрирован!
+            </div>
+        </c:if>
+        <c:if test="${requestScope.profileSuccessfullyUpdated != null}">
+            <div class="alert alert-success" role="alert">
+                Profile updated successfully!
+            </div>
+        </c:if>
+        <input name="userId" type="hidden" value="${sessionScope.userId}">
+
         <div class="mb-3">
             <label for="emailInput" class="form-label">Email</label>
-            <input type="email" class="form-control" id="emailInput" value="${sessionScope.email}">
+            <input name="email" type="email" class="form-control" id="emailInput" value="${sessionScope.email}">
         </div>
 
         <div class="mb-3">
             <label for="firstNameInput" class="form-label">First Name</label>
-            <input type="email" class="form-control" id="firstNameInput" value="${sessionScope.firstName}">
+            <input name="firstName" type="text" class="form-control" id="firstNameInput"
+                   value="${sessionScope.firstName}">
         </div>
 
         <div class="mb-3">
             <label for="lastNameInput" class="form-label">Last Name</label>
-            <input type="email" class="form-control" id="lastNameInput" value="${sessionScope.lastName}">
+            <input name="lastName" type="text" class="form-control" id="lastNameInput" value="${sessionScope.lastName}">
         </div>
 
         <div class="mb-3">
             <label for="addressInput" class="form-label">Address</label>
-            <input type="email" class="form-control" id="addressInput" value="${sessionScope.address}">
+            <input name="address" type="text" class="form-control" id="addressInput" value="${sessionScope.address}">
         </div>
 
         <div class="mb-3">
             <label for="mobileInput" class="form-label">Mobile</label>
-            <input type="email" class="form-control" id="mobileInput" value="${sessionScope.mobile}">
+            <input name="phoneNo" type="text" class="form-control" id="mobileInput" value="${sessionScope.mobile}">
         </div>
 
         <button type="submit" class="btn btn-primary">Сохранить</button>

@@ -47,7 +47,7 @@ public class GenreDaoImpl implements GenreDao {
     }
 
     @Override
-    public void update(Genre genre, String[] params) {
+    public void update(Genre genre, int langId) {
 
     }
 

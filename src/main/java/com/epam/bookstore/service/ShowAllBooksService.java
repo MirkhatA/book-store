@@ -4,7 +4,6 @@ import com.epam.bookstore.dao.BookDao;
 import com.epam.bookstore.dao.impl.BookDaoImpl;
 import com.epam.bookstore.entity.Book;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-import static com.epam.bookstore.util.PageNameConstants.booksJsp;
+import static com.epam.bookstore.constants.PageNameConstants.booksJsp;
 
 public class ShowAllBooksService implements Service {
     private BookDao bookDao = new BookDaoImpl();

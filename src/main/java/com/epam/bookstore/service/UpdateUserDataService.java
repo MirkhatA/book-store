@@ -13,39 +13,43 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Objects;
 
-import static com.epam.bookstore.constants.PageNameConstants.indexJsp;
-import static com.epam.bookstore.constants.PageNameConstants.loginJsp;
+import static com.epam.bookstore.constants.PageNameConstants.*;
 
-public class LoginService implements Service{
+public class UpdateUserDataService implements Service {
     private final UserDao userDao = new UserDaoImpl();
     private final UserFactory userFactory = UserFactory.getInstance();
-    private final ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ParseException, SQLException {
         RequestDispatcher dispatcher;
         HttpSession session = req.getSession();
 
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
+        String email = (String) session.getAttribute("email");
+        String mobile = (String) session.getAttribute("mobile");
+        Integer langId = (Integer) session.getAttribute("languageId");
 
-        User user = userDao.getUserByLoginPassword(login, password);
+        if (userDao.isEmailExist(req.getParameter("email")) && !Objects.equals(req.getParameter("email"), email)) {
+            req.setAttribute("emailIsTaken", "This email is already is taken");
+            dispatcher = req.getRequestDispatcher(profileJsp);
+            dispatcher.forward(req, res);
+        } else if (userDao.isNumberExist(req.getParameter("phoneNo")) && !Objects.equals(req.getParameter("phoneNo"), mobile)) {
+            req.setAttribute("numberIsTaken", "This number is already is taken");
+            dispatcher = req.getRequestDispatcher(profileJsp);
+            dispatcher.forward(req, res);
+        } else {
+            User user = userFactory.setData(req);
+            userDao.update(user, langId);
 
-        if (user != null) {
-            session.setAttribute("userId", user.getId());
             session.setAttribute("email", user.getEmail());
             session.setAttribute("firstName", user.getFirstName());
             session.setAttribute("lastName", user.getLastName());
             session.setAttribute("address", user.getAddress());
             session.setAttribute("mobile", user.getMobile());
-            session.setAttribute("role", user.getRoleId());
 
-            dispatcher = req.getRequestDispatcher(indexJsp);
-            dispatcher.forward(req, res);
-        } else {
-            req.setAttribute("loginError", "Login error");
-            dispatcher = req.getRequestDispatcher(loginJsp);
+            req.setAttribute("profileSuccessfullyUpdated", "Profile updated successfully!");
+            dispatcher = req.getRequestDispatcher(profileJsp);
             dispatcher.forward(req, res);
         }
     }

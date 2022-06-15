@@ -15,12 +15,13 @@ public class ServiceFactory {
         serviceMap.put(errorService, new ErrorService());
         serviceMap.put(registerService, new RegisterService());
         serviceMap.put(loginService, new LoginService());
+        serviceMap.put(logoutService, new LogoutService());
+        serviceMap.put(showProfileService, new ShowProfileService());
         serviceMap.put(showAllGenresService, new ShowAllGenresService());
         serviceMap.put(showAllAuthorsService, new ShowAllAuthorsService());
         serviceMap.put(showAllBooksService, new ShowAllBooksService());
         serviceMap.put(changeToEnglishService, new ChangeToEnglishService());
-        serviceMap.put(logoutService, new LogoutService());
-        serviceMap.put(profileService, new ProfileService());
+        serviceMap.put(updateUserDataService, new UpdateUserDataService());
     }
 
     public static ServiceFactory getInstance() {

@@ -1,4 +1,4 @@
-package com.epam.bookstore.util;
+package com.epam.bookstore.constants;
 
 public class PageNameConstants {
     public static final String errorJsp = "/error.jsp";

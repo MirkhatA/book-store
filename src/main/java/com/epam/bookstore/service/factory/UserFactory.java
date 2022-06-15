@@ -14,10 +14,14 @@ public class UserFactory {
 
     public User setData(HttpServletRequest req) {
         User user = new User();
+        user.setId(Long.valueOf(req.getParameter("userId")));
         user.setFirstName(req.getParameter("firstName"));
+        user.setLastName(req.getParameter("lastName"));
         user.setEmail(req.getParameter("email"));
         user.setPassword(req.getParameter("password"));
+        user.setAddress(req.getParameter("address"));
         user.setMobile(req.getParameter("phoneNo"));
+
         return user;
     }
 

@@ -25,7 +25,7 @@
                 </li>
                 <c:if test="${not empty sessionScope.email}">
                     <li class="nav-item">
-                        <a class="nav-link" href="/profileService">
+                        <a class="nav-link" href="/showProfileService">
                             <c:out value="${sessionScope.email}"/>
                         </a>
                     </li>

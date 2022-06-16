@@ -29,6 +29,12 @@
                             <c:out value="${sessionScope.email}"/>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/showCartService">
+                            cart
+                        </a>
+                    </li>
                 </c:if>
                 <li class="nav-item dropdown">
                     <c:if test="${not empty sessionScope.email}">

@@ -7,30 +7,18 @@
 <jsp:include page="header.jsp"/>
 
 <div class="container">
-    <h1><fmt:message key="label.welcomeTitle"/></h1>
+    <h1>Корзина</h1>
 
     <table class="table table-striped">
         <tr>
-            <th>Id</th>
             <th>Title</th>
-            <th>Description</th>
             <th>Image</th>
-            <th>Quantity</th>
             <th>Price</th>
+            <th>Quantity</th>
             <th>Action</th>
         </tr>
 
-        <c:forEach var="book" items="${sessionScope.books}">
-            <tr>
-                <td>${book.id}</td>
-                <td><a href="#">${book.title}</a></td>
-                <td>${book.description}</td>
-                <td>${book.image}</td>
-                <td>${book.quantity}</td>
-                <td>${book.price}</td>
-                <td><a href="#">Add</a></td>
-            </tr>
-        </c:forEach>
+
     </table>
 </div>
 

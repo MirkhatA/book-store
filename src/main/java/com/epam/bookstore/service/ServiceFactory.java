@@ -23,6 +23,7 @@ public class ServiceFactory {
         serviceMap.put(changeToEnglishService, new ChangeToEnglishService());
         serviceMap.put(changeToRussianService, new ChangeToRussianService());
         serviceMap.put(updateUserDataService, new UpdateUserDataService());
+        serviceMap.put(showCartService, new ShowCartService());
     }
 
     public static ServiceFactory getInstance() {

@@ -7,14 +7,12 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Language</th>
         </tr>
 
         <c:forEach var="genre" items="${sessionScope.genres}">
             <tr>
                 <td>${genre.id}</td>
                 <td>${genre.name}</td>
-                <td>${genre.languageId}</td>
             </tr>
         </c:forEach>
     </table>

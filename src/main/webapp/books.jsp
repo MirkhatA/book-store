@@ -22,22 +22,18 @@
             <th>Image</th>
             <th>Quantity</th>
             <th>Price</th>
-            <th>author_id</th>
-            <th>publisher_id</th>
-            <th>language_id</th>
+            <th>Action</th>
         </tr>
 
         <c:forEach var="book" items="${sessionScope.books}">
             <tr>
                 <td>${book.id}</td>
-                <td>${book.title}</td>
+                <td><a href="#">${book.title}</a></td>
                 <td>${book.description}</td>
                 <td>${book.image}</td>
                 <td>${book.quantity}</td>
                 <td>${book.price}</td>
-                <td>${book.authorId}</td>
-                <td>${book.publisherId}</td>
-                <td>${book.languageId}</td>
+                <td><a href="#">Add</a></td>
             </tr>
         </c:forEach>
     </table>

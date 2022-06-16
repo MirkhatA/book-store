@@ -7,14 +7,12 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Language</th>
         </tr>
 
         <c:forEach var="author" items="${sessionScope.authors}">
             <tr>
                 <th>${author.id}</th>
                 <th>${author.fullName}</th>
-                <th>${author.languageId}</th>
             </tr>
         </c:forEach>
 

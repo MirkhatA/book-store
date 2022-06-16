@@ -59,7 +59,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li><a class="dropdown-item" href="/changeToEnglishService">English</a></li>
-                        <li><a class="dropdown-item" href="#">Русский</a></li>
+                        <li><a class="dropdown-item" href="/changeToRussianService">Русский</a></li>
                     </ul>
                 </li>
             </ul>

@@ -21,6 +21,7 @@ public class ServiceFactory {
         serviceMap.put(showAllAuthorsService, new ShowAllAuthorsService());
         serviceMap.put(showAllBooksService, new ShowAllBooksService());
         serviceMap.put(changeToEnglishService, new ChangeToEnglishService());
+        serviceMap.put(changeToRussianService, new ChangeToRussianService());
         serviceMap.put(updateUserDataService, new UpdateUserDataService());
     }
 

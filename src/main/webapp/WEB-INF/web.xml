@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>ServiceController</servlet-name>
-        <servlet-class>com.epam.bookstore.controller.ServiceController</servlet-class>
+        <servlet-class>com.epam.bookstore.controller.Controller</servlet-class>
     </servlet>
 
     <servlet-mapping>

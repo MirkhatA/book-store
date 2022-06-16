@@ -13,10 +13,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-public class ServiceController extends HttpServlet {
+public class Controller extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass().getName());
 
-    public ServiceController() {
+    public Controller() {
         super();
     }
 

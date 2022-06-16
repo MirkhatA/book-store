@@ -25,7 +25,6 @@
                 Profile updated successfully!
             </div>
         </c:if>
-        <input name="userId" type="hidden" value="${sessionScope.userId}">
 
         <div class="mb-3">
             <label for="emailInput" class="form-label">Email</label>

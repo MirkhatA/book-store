@@ -61,7 +61,7 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public void update(Book book, int langId) {
+    public void update(Long id, Book book, int langId) {
 
     }
 

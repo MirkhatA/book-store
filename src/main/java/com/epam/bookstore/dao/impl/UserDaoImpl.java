@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
-    private static final String INSERT_USER = "INSERT INTO users (first_name, email, password, mobile, role_id) VALUES(?, ?, ?, ?, ?);";
+    private static final String INSERT_USER = "INSERT INTO users (first_name, email, password, mobile, registered_at, role_id) VALUES(?, ?, ?, ?, ?, ?);";
     private static final String GET_USER_BY_LOGIN_PASSWORD = "SELECT * FROM users WHERE (email=? OR mobile=?) AND password=?;";
     private static final String GET_USER_BY_LOGIN = "SELECT * FROM users WHERE email=?;";
     private static final String GET_USER_BY_MOBILE = "SELECT * FROM users WHERE mobile=?;";
@@ -105,12 +105,16 @@ public class UserDaoImpl implements UserDao {
         connectionPool = ConnectionPool.getInstance();
         connection = connectionPool.takeConnection();
 
+        java.util.Date date=new java.util.Date();
+        java.sql.Date sqlDate=new java.sql.Date(date.getTime());
+
         try (PreparedStatement ps = connection.prepareStatement(INSERT_USER)){
             ps.setString(1, user.getFirstName());
             ps.setString(2, user.getEmail());
             ps.setString(3, user.getPassword());
             ps.setString(4, user.getMobile());
-            ps.setInt(5, 1);
+            ps.setDate(5, sqlDate);
+            ps.setInt(6, 1);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -118,7 +122,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void update(User user, int langId) throws SQLException {
+    public void update(Long id, User user, int langId) throws SQLException {
         connectionPool = ConnectionPool.getInstance();
         connection = connectionPool.takeConnection();
 
@@ -128,7 +132,7 @@ public class UserDaoImpl implements UserDao {
             ps.setString(3, user.getEmail());
             ps.setString(4, user.getAddress());
             ps.setString(5, user.getMobile());
-            ps.setLong(6, user.getId());
+            ps.setLong(6, id);
 
             ps.executeUpdate();
         } catch (SQLException e) {

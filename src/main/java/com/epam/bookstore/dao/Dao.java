@@ -9,7 +9,7 @@ public interface Dao<T> {
 
     void create(T t);
 
-    void update(T t, int langId) throws SQLException;
+    void update(Long id, T t, int langId) throws SQLException;
 
     T getById(long id);
 }

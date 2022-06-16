@@ -29,6 +29,7 @@ public class UpdateUserDataService implements Service {
         String email = (String) session.getAttribute("email");
         String mobile = (String) session.getAttribute("mobile");
         Integer langId = (Integer) session.getAttribute("languageId");
+        Long userId = (Long) session.getAttribute("userId");
 
         if (userDao.isEmailExist(req.getParameter("email")) && !Objects.equals(req.getParameter("email"), email)) {
             req.setAttribute("emailIsTaken", "This email is already is taken");
@@ -39,8 +40,10 @@ public class UpdateUserDataService implements Service {
             dispatcher = req.getRequestDispatcher(profileJsp);
             dispatcher.forward(req, res);
         } else {
+
             User user = userFactory.setData(req);
-            userDao.update(user, langId);
+
+            userDao.update(userId, user, langId);
 
             session.setAttribute("email", user.getEmail());
             session.setAttribute("firstName", user.getFirstName());

@@ -15,5 +15,6 @@ public class ServiceUrl {
 
     static final String changeToEnglishService = "/changeToEnglishService";
     static final String changeToRussianService = "/changeToRussianService";
-    static final String addToCartService = "/addToCart";
+    static final String addToCartService = "/addToCartService";
+    static final String removeFromCartService = "/removeFromCartService";
 }

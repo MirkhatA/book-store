@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartDaoImpl implements CartDao {
-    private static final String GET_CART_BY_USER_ID = "SELECT c.id, CONCAT(first_name, ' ', last_name) AS `name`, b.title AS `book_title`, c.quantity FROM cart c " +
+    private static final String GET_CART_BY_USER_ID = "SELECT c.id, CONCAT(first_name, ' ', last_name) AS `name`, b.title AS `book_title`, c.book_id, c.quantity FROM cart c " +
             " JOIN books b ON b.id = c.book_id  JOIN users u ON u.id = c.user_id " +
             " WHERE user_id = ? AND language_id = ?;";
+    private static final String ADD_TO_CART_BY_BOOK_ID = "UPDATE cart SET quantity = quantity + 1 WHERE book_id = ?;";
+    private static final String REMOVE_FROM_CART_BY_BOOK_ID = "UPDATE cart SET quantity = quantity - 1 WHERE book_id = ?;";
 
     private ConnectionPool connectionPool;
     private Connection connection;
@@ -40,13 +42,37 @@ public class CartDaoImpl implements CartDao {
     }
 
     @Override
-    public List<Cart> addBookToCart(Long bookId) {
-        List<Cart> cartList = new ArrayList<>();
+    public void addBookToCart(Long bookId) {
+        connectionPool = ConnectionPool.getInstance();
+        connection = connectionPool.takeConnection();
 
-        Cart cart = new Cart();
-
-        return cartList;
+        try (PreparedStatement ps = connection.prepareStatement(ADD_TO_CART_BY_BOOK_ID)){
+            ps.setLong(1, bookId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
+
+    @Override
+    public void removeBookFromCart(Long bookId) {
+        connectionPool = ConnectionPool.getInstance();
+        connection = connectionPool.takeConnection();
+
+        try (PreparedStatement ps = connection.prepareStatement(REMOVE_FROM_CART_BY_BOOK_ID)){
+            ps.setLong(1, bookId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public void removeFromCart(Long bookId) {
+
+    }
+
+
 
     @Override
     public List<Cart> getCartByUserId(Long userId, int langId) {
@@ -60,7 +86,6 @@ public class CartDaoImpl implements CartDao {
             ps.setInt(2, langId);
 
             ResultSet rs = ps.executeQuery();
-            System.out.println("1");
             while (rs.next()) {
                 pushToCartList(cartList, rs);
             }
@@ -77,12 +102,12 @@ public class CartDaoImpl implements CartDao {
         cart.setId(rs.getLong("id"));
         cart.setUserName(rs.getString("name"));
         cart.setBookName(rs.getString("book_title"));
+        cart.setBookId(rs.getInt("book_id"));
         cart.setQuantity(rs.getInt("quantity"));
-
-        System.out.println(cart.toString());
 
         cartList.add(cart);
     }
+
 
 
 }

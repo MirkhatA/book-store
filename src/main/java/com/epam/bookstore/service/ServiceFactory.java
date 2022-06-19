@@ -24,6 +24,8 @@ public class ServiceFactory {
         serviceMap.put(changeToRussianService, new ChangeToRussianService());
         serviceMap.put(updateUserDataService, new UpdateUserDataService());
         serviceMap.put(showCartService, new ShowCartService());
+        serviceMap.put(addToCartService, new AddToCartService());
+        serviceMap.put(removeFromCartService, new RemoveFromCartService());
     }
 
     public static ServiceFactory getInstance() {

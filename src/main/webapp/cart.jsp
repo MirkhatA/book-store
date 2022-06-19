@@ -5,24 +5,29 @@
 <div class="container">
     <h1>Корзина</h1>
 
-    <table class="table table-striped">
-        <tr>
-            <th>book id</th>
-            <th>quantity</th>
-            <th>action</th>
-        </tr>
-
-        <c:forEach var="cart" items="${sessionScope.cartList}">
+    <form action="" method="post">
+        <table class="table table-striped">
             <tr>
-                <td>${cart.bookName}</td>
-                <td>${cart.quantity}</td>
-                <td>
-                    <a href="#">Add</a>
-                    <a href="#">Delete</a>
-                </td>
+                <th>book id</th>
+                <th>quantity</th>
             </tr>
-        </c:forEach>
-    </table>
+
+            <c:forEach var="cart" items="${sessionScope.cartList}">
+                <tr>
+                    <td>${cart.bookName}</td>
+                    <td>
+                        <a href="/addToCartService?id=${cart.bookId}">+</a>
+                        <b>${cart.quantity}</b>
+                        <a href="/removeFromCartService?id=${cart.bookId}">-</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+
+        <button type="submit" class="btn btn-primary">Оформить заказ</button>
+    </form>
+
+
 </div>
 
 <jsp:include page="footer.jsp"/>

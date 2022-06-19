@@ -2,10 +2,15 @@ package com.epam.bookstore.dao;
 
 import com.epam.bookstore.entity.Cart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface CartDao extends Dao<Cart> {
-    List<Cart> addBookToCart(Long bookId);
+    void addBookToCart(Long bookId);
+
+    void removeBookFromCart(Long bookId);
+
+    void removeFromCart(Long bookId);
 
     List<Cart> getCartByUserId(Long userId, int langId);
 }

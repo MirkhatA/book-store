@@ -15,7 +15,7 @@ import java.util.List;
 
 import static com.epam.bookstore.constants.PageNameConstants.cartJsp;
 
-public class ShowCartService implements Service{
+public class ShowCartService implements Service {
     private CartDao cartDao = new CartDaoImpl();
 
     @Override
@@ -24,18 +24,9 @@ public class ShowCartService implements Service{
         Long userId = (Long) session.getAttribute("userId");
         Integer langId = (Integer) session.getAttribute("languageId");
 
+        List<Cart> cartList = cartDao.getCartByUserId(userId, langId);
 
-        try {
-            List<Cart> cartList = cartDao.getCartByUserId(userId, langId);
-
-            session.setAttribute("cartList", cartList);
-            System.out.println(session.getAttribute("cartList"));
-            req.getRequestDispatcher(cartJsp).forward(req, res);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-
-
+        session.setAttribute("cartList", cartList);
+        req.getRequestDispatcher(cartJsp).forward(req, res);
     }
 }

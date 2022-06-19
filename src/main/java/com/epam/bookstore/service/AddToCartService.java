@@ -13,28 +13,16 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-import static com.epam.bookstore.constants.PageNameConstants.cartJsp;
-
-public class ShowCartService implements Service{
-    private CartDao cartDao = new CartDaoImpl();
+public class AddToCartService implements Service{
+    CartDao cartDao = new CartDaoImpl();
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ParseException, SQLException {
         HttpSession session = req.getSession();
-        Long userId = (Long) session.getAttribute("userId");
-        Integer langId = (Integer) session.getAttribute("languageId");
+        Long bookId = Long.parseLong(req.getParameter("bookId"));
+        Integer langId = (Integer) session.getAttribute("langId");
 
-
-        try {
-            List<Cart> cartList = cartDao.getCartByUserId(userId, langId);
-
-            session.setAttribute("cartList", cartList);
-            System.out.println(session.getAttribute("cartList"));
-            req.getRequestDispatcher(cartJsp).forward(req, res);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
+        List<Cart> cartList = (List<Cart>) session.getAttribute("cartList");
 
 
     }

@@ -1,9 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<fmt:setLocale value="${sessionScope.language}"/>
-<fmt:setBundle basename="messages"/>
-
 <jsp:include page="header.jsp"/>
 
 <div class="container">
@@ -11,14 +7,21 @@
 
     <table class="table table-striped">
         <tr>
-            <th>Title</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Action</th>
+            <th>book id</th>
+            <th>quantity</th>
+            <th>action</th>
         </tr>
 
-
+        <c:forEach var="cart" items="${sessionScope.cartList}">
+            <tr>
+                <td>${cart.bookName}</td>
+                <td>${cart.quantity}</td>
+                <td>
+                    <a href="#">Add</a>
+                    <a href="#">Delete</a>
+                </td>
+            </tr>
+        </c:forEach>
     </table>
 </div>
 

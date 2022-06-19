@@ -1,19 +1,22 @@
 package com.epam.bookstore.entity;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class Cart {
 
     private Long id;
-    private Long userId;
-    private Long bookId;
-    private Integer quantity;
-    private Date createdAt;
-    private Double price;
-    private Double totalPrice;
+    private String userName;
+    private String bookName;
+    private int quantity;
 
     public Cart() {
+    }
+
+    public Cart(Long id, String userName, String bookName, int quantity) {
+        this.id = id;
+        this.userName = userName;
+        this.bookName = bookName;
+        this.quantity = quantity;
     }
 
     public Long getId() {
@@ -24,52 +27,28 @@ public class Cart {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public Long getBookId() {
-        return bookId;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     @Override
@@ -77,30 +56,24 @@ public class Cart {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return Objects.equals(id, cart.id) &&
-                Objects.equals(userId, cart.userId) &&
-                Objects.equals(bookId, cart.bookId) &&
-                Objects.equals(quantity, cart.quantity) &&
-                Objects.equals(createdAt, cart.createdAt) &&
-                Objects.equals(price, cart.price) &&
-                Objects.equals(totalPrice, cart.totalPrice);
+        return quantity == cart.quantity &&
+                Objects.equals(id, cart.id) &&
+                Objects.equals(userName, cart.userName) &&
+                Objects.equals(bookName, cart.bookName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, bookId, quantity, createdAt, price, totalPrice);
+        return Objects.hash(id, userName, bookName, quantity);
     }
 
     @Override
     public String toString() {
         return "Cart{" +
                 "id=" + id +
-                ", userId=" + userId +
-                ", bookId=" + bookId +
+                ", userName='" + userName + '\'' +
+                ", bookName='" + bookName + '\'' +
                 ", quantity=" + quantity +
-                ", createdAt=" + createdAt +
-                ", price=" + price +
-                ", totalPrice=" + totalPrice +
                 '}';
     }
 }
